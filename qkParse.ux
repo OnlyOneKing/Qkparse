@@ -1,0 +1,205 @@
+<template>
+  <div class="tutorial-page">
+    <block for="{{nodeData.nodes}}">
+      <!-- 判断是否是标签节点 -->
+      <block if="{{$item.node == 'element'}}">
+        <block if="{{$item.tagType == 'block'}}">
+          <div class="{{$item.classStr}} qkParse-{{$item.tag}}">
+            <block for="{{mItem in $item.nodes}}">
+              <!-- 判断是否是标签节点 -->
+              <block if="{{mItem.node == 'element'}}">
+                <block if="{{mItem.tagType == 'block'}}">
+                  <div class="{{mItem.classStr}} qkParse-{{mItem.tag}}">
+                    <block for="{{aItem in mItem.nodes}}">
+                      <!-- 判断是否是标签节点 -->
+                      <block if="{{aItem.node == 'element'}}">
+                        <block if="{{aItem.tagType == 'block'}}">
+                          <div class="{{aItem.classStr}} qkParse-{{aItem.tag}}" style="{{aItem.styleStr}}">
+                            <block for="{{bItem in aItem.nodes}}">
+                              <!-- 判断是否是标签节点 -->
+                              <block if="{{bItem.node == 'element'}}">
+                                <block if="{{bItem.tagType == 'block'}}">
+                                  <div class="{{bItem.classStr}} qkParse-{{bItem.tag}}" style="{{bItem.styleStr}}">
+                                    <!-- <block for="{{bItem in aItem.nodes}}">
+
+                            </block> -->
+                                  </div>
+                                </block>
+                                <block if="{{bItem.tag == 'img'}}">
+                                  <image data-from="{{bItem.from}}" data-idx="{{bItem.imgIndex}}" data-src="{{bItem.attr.data?bItem.attr.data:bItem.attr.src}}" src="{{bItem.attr.src}}" class="{{bItem.classStr}} qkParse-{{bItem.tag}}" style="object-fit: cover;border-radius: 20px;width: 100%;" @click="qkParseImgTap">
+                                  </image>
+                                </block>
+                              </block>
+                              <!-- 判断是否是文本节点 -->
+                              <block elif="{{bItem.node == 'text'}}">
+                                <div class="qkEmojiView qkParse-inline" style="{{bItem.styleStr}}">
+                                  <block for="{{value in bItem.textArray}}">
+                                    <block if="{{value.node == 'text'}}">
+                                      <text style="font-size: {{fontSize == 1 ? 28 : (fontSize == 2 ? 32 : (fontSize == 3 ? 36 : (fontSize == 4 ? 40 : (fontSize == 5 ? 44 : 48))))}}px;">{{value.text}}</text>
+                                    </block>
+                                    <block elif="{{value.node == 'element'}}">
+                                      <image class="qkEmoji" src="{{value.baseSrc}}{{value.text}}" />
+                                    </block>
+                                  </block>
+                                </div>
+                              </block>
+                            </block>
+                          </div>
+                        </block>
+                        <block if="{{aItem.tag == 'img'}}">
+                          <image data-from="{{aItem.from}}" data-idx="{{aItem.imgIndex}}" data-src="{{aItem.attr.data?aItem.attr.data:aItem.attr.src}}" src="{{aItem.attr.src}}" class="{{aItem.classStr}} qkParse-{{aItem.tag}}" style="object-fit: cover;border-radius: 20px;width: 100%;" @click="qkParseImgTap">
+                          </image>
+                        </block>
+                      </block>
+                      <!-- 判断是否是文本节点 -->
+                      <block elif="{{aItem.node == 'text'}}">
+                        <div class="qkEmojiView qkParse-inline" style="{{aItem.styleStr}}">
+                          <block for="{{value in aItem.textArray}}">
+                            <block if="{{value.node == 'text'}}">
+                              <text style="font-size: {{fontSize == 1 ? 28 : (fontSize == 2 ? 32 : (fontSize == 3 ? 36 : (fontSize == 4 ? 40 : (fontSize == 5 ? 44 : 48))))}}px;">{{value.text}}</text>
+                            </block>
+                            <block elif="{{value.node == 'element'}}">
+                              <image class="qkEmoji" src="{{value.baseSrc}}{{value.text}}" />
+                            </block>
+                          </block>
+                        </div>
+                      </block>
+
+                    </block>
+                  </div>
+                </block>
+                <block if="{{mItem.tag == 'img'}}">
+                  <image data-from="{{mItem.from}}" data-idx="{{mItem.imgIndex}}" data-src="{{mItem.attr.data?mItem.attr.data:mItem.attr.src}}" src="{{mItem.attr.src}}" class="{{mItem.classStr}} qkParse-{{mItem.tag}}" style="object-fit: cover;border-radius: 20px;width: 100%;" @click="qkParseImgTap">
+                  </image>
+                </block>
+              </block>
+              <!-- 判断是否是文本节点 -->
+              <block elif="{{mItem.node == 'text'}}">
+                <div class="qkEmojiView qkParse-inline" style="{{mItem.styleStr}}">
+                  <block for="{{value in mItem.textArray}}">
+                    <block if="{{value.node == 'text'}}">
+                      <text style="font-size: {{fontSize == 1 ? 28 : (fontSize == 2 ? 32 : (fontSize == 3 ? 36 : (fontSize == 4 ? 40 : (fontSize == 5 ? 44 : 48))))}}px;">{{value.text}}</text>
+                    </block>
+                    <block elif="{{value.node == 'element'}}">
+                      <image class="qkEmoji" src="{{value.baseSrc}}{{value.text}}" />
+                    </block>
+                  </block>
+                </div>
+              </block>
+            </block>
+          </div>
+        </block>
+        <block if="{{$item.tag == 'img'}}">
+          <image data-from="{{$item.from}}" data-idx="{{$item.imgIndex}}" data-src="{{$item.attr.data?$item.attr.data:$item.attr.src}}" src="{{$item.attr.src}}" class="{{$item.classStr}} qkParse-{{$item.tag}}" style="object-fit: cover;border-radius: 20px;width: 100%;" @click="qkParseImgTap">
+          </image>
+        </block>
+      </block>
+      <!-- 判断是否是文本节点 -->
+      <block elif="{{$item.node == 'text'}}">
+        <div class="qkEmojiView qkParse-inline" style="{{$item.styleStr}}">
+          <block for="{{value in $item.textArray}}">
+            <block if="{{value.node == 'text'}}">
+              <text style="font-size: {{fontSize == 1 ? 28 : (fontSize == 2 ? 32 : (fontSize == 3 ? 36 : (fontSize == 4 ? 40 : (fontSize == 5 ? 44 : 48))))}}px;">{{value.text}}</text>
+            </block>
+            <block elif="{{value.node == 'element'}}">
+              <image class="qkEmoji" src="{{value.baseSrc}}{{value.text}}" />
+            </block>
+          </block>
+        </div>
+      </block>
+    </block>
+  </div>
+</template>
+
+<style>
+@import "../qkParse/qkParse.css";
+.tutorial-page {
+  flex-wrap: wrap;
+  padding: 0 30px;
+}
+.tutorial-page image{
+  width:100%;
+}
+.yin {
+  padding: 20px 15px;
+  position: relative;
+}
+.yin text {
+  font-size: 34px;
+  line-height: 60px;
+  color: #666;
+}
+.imgbox {
+  flex-wrap: wrap;
+}
+.imginfo {
+  flex-wrap: wrap;
+  padding: 8px 40px;
+}
+.imginfo text {
+  font-size: 28px;
+  color: #999;
+  line-height: 50px;
+}
+.img {
+  width: 100%;
+}
+.qkParse-img {
+  width: 100%;
+  border-radius: 20px;
+}
+.imginfoBox {
+  position: relative;
+  margin: 0px;
+  padding: 30px 0;
+}
+.left-line {
+  width: 10px;
+  margin-top: -6px;
+  background-color: #f1f4f6;
+  border-radius: 12px;
+  position: absolute;
+  left: 0;
+  top: 60px;
+  bottom:60px;
+}
+.yin-img{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+</style>
+
+<script>
+import router from '@system.router'
+import prompt from '@system.prompt'
+
+
+// 子组件
+export default {
+  props: ['nodeData', 'fontSize', 'canSee'],
+  data: {
+    say: 'hello',
+    obj: {
+      name: 'quickApp'
+    }
+  },
+  qkParseImgTap(e) {
+    var id = e.target.dataset.idx
+    if(this.canSee && this.canSee > 0) {
+      prompt.showToast({
+        message: '购买后可看高清大图'
+      })
+      return false
+    }
+    router.push({
+      uri: '/ViewScale',
+      params: {
+        id
+      }
+    })
+
+
+  }
+}
+</script>

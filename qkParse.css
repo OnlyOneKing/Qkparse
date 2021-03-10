@@ -1,0 +1,138 @@
+
+/**
+ * by 王青松
+ */
+
+.qkParse{
+    margin: 0 5px;
+}
+.qkParse text{
+    font-family: Helvetica,sans-serif; 
+    font-size: 14px;
+    color: #666;
+}
+
+.qkParse-inline{
+    margin: 0;
+    padding: 0;
+}
+/*//标题 */
+.qkParse-div{margin: 0;padding: 0;}
+
+.qkParse-h1 text, .qkParse-h2 text, .qkParse-h3 text{
+  font-size: 40px;
+  font-weight: bold;
+}
+.qkParse-p {
+    margin-bottom: 60px;
+    margin-right:30px;
+}
+.qkParse-p text{
+    font-size: 34px;
+    line-height: 60px;
+    color: #666;
+    text-indent: 60px;
+}
+
+.qkParse-h1, .qkParse-h2, .qkParse-h3, .qkParse-h4, .qkParse-h5, .qkParse-h6, .qkParse-b, .qkParse-strong  { font-weight: 500;text-align: center;margin: 30px auto; }
+
+.qkParse-i,.qkParse-cite,.qkParse-em,.qkParse-var,.qkParse-address{font-style:italic}
+.qkParse-strike{text-decoration:line-through}
+/*qkparse-自定义个性化的css样式*/
+/*增加video的css样式*/
+.qkParse-a{
+    color: deepskyblue;
+}
+
+.qkParse-video{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.qkParse-video-video{
+    width:100%;
+}
+
+.qkParse-blockquote {
+    margin: 0;
+    padding:10px 0 10px 5px;
+    font-family:Courier, Calibri,"宋体";
+    background-color:#f5f5f5;
+    border-left: 3px solid #dbdbdb;
+}
+
+.qkParse-code,.qkParse-qkxxcode-style{
+    background-color:#f5f5f5;
+}
+.qkParse-ul{
+    margin: 10px 5px;
+}
+
+.qkParse-li,.qkParse-li-inner{
+    display: flex;
+    margin: 5px 0;
+}
+.qkParse-li-text{
+    align-items: center;
+    line-height: 20px;
+}
+
+.qkParse-li-circle{
+    /* width: 5px;
+    height: 5px;
+    background-color: #333; */
+    margin-right: 5px;
+}
+
+.qkParse-li-square{
+    width: 5px;
+    height: 5px;
+    background-color: #333;
+    margin-right: 5px;
+}
+.qkParse-li-ring{
+    width: 5px;
+    height: 5px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 5px;
+}
+
+.qkParse-u {
+  text-decoration: underline;
+}
+.qkParse-hide{
+    display: none;
+}
+.qkEmojiView{
+    align-items: center;
+}
+.qkEmoji{
+    width: 16px;
+    height:16px;
+}
+.qkParse-tr{
+	display: flex;
+	border-right:1px solid #e0e0e0;
+	border-bottom:1px solid #e0e0e0;
+	border-top:1px solid #e0e0e0;
+}
+.qkParse-td{
+	flex:1;
+	padding:5px;
+	font-size:14px;
+	border-left:1px solid #e0e0e0;
+}
+
+.qkParse-th{
+	background-color:#f0f0f0;
+    border-top:1px solid #e0e0e0;
+    flex:1;
+	padding:5px;
+	font-size:14px;
+	border-left:1px solid #e0e0e0;
+}
+.qkParse-del{
+    text-decoration:line-through;
+}
